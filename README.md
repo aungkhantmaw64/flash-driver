@@ -1,11 +1,6 @@
 # M28W160ECx Driver
 
-<details>
-<summary>
-
 ## Flash Memory Program Flow Chart
-
-</summary>
 
 ```mermaid
 flowchart TD
@@ -17,7 +12,7 @@ flowchart TD
     id6{b3==0?}
     id7{b4==0?}
     id8{b1==0?}
-    id9(End)
+    id9(End/Start)
     id10[Vpp Error]
     id11[Program Error]
     id12[Protected Block Error]
@@ -42,8 +37,6 @@ flowchart TD
     id13 --> id9
 
 ```
-
-</details>
 
 <details>
 <summary>
