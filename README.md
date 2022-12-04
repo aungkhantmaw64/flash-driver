@@ -5,7 +5,7 @@
 ```mermaid
 flowchart TD
     id1(Start)
-    id2[/Program Command Write 0 to 0x40/]
+    id2[/Program Command Write 0x40 to 0/]
     id3[/Write data to address/]
     id4[/Read status register/]
     id5{b7==1?}
