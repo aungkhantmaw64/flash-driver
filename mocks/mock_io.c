@@ -5,10 +5,10 @@
 #include "cmock.h"
 #include "mock_io.h"
 
-static const char* CMockString_addr = "addr";
-static const char* CMockString_data = "data";
-static const char* CMockString_uxIORead = "uxIORead";
-static const char* CMockString_vIOWrite = "vIOWrite";
+static const char *CMockString_addr = "addr";
+static const char *CMockString_data = "data";
+static const char *CMockString_uxIORead = "uxIORead";
+static const char *CMockString_vIOWrite = "vIOWrite";
 
 typedef struct _CMOCK_uxIORead_CALL_INSTANCE
 {
@@ -98,17 +98,17 @@ void mock_io_Destroy(void)
 ioData uxIORead(ioAddress addr)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
-  CMOCK_uxIORead_CALL_INSTANCE* cmock_call_instance;
+  CMOCK_uxIORead_CALL_INSTANCE *cmock_call_instance;
   UNITY_SET_DETAIL(CMockString_uxIORead);
-  cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.uxIORead_CallInstance);
+  cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE *)CMock_Guts_GetAddressFor(Mock.uxIORead_CallInstance);
   Mock.uxIORead_CallInstance = CMock_Guts_MemNext(Mock.uxIORead_CallInstance);
   if (Mock.uxIORead_IgnoreBool)
   {
     UNITY_CLR_DETAILS();
     if (cmock_call_instance == NULL)
       return Mock.uxIORead_FinalReturn;
-    memcpy((void*)(&Mock.uxIORead_FinalReturn), (void*)(&cmock_call_instance->ReturnVal),
-         sizeof(ioData[sizeof(cmock_call_instance->ReturnVal) == sizeof(ioData) ? 1 : -1])); /* add ioData to :treat_as_array if this causes an error */
+    memcpy((void *)(&Mock.uxIORead_FinalReturn), (void *)(&cmock_call_instance->ReturnVal),
+           sizeof(ioData[sizeof(cmock_call_instance->ReturnVal) == sizeof(ioData) ? 1 : -1])); /* add ioData to :treat_as_array if this causes an error */
     return cmock_call_instance->ReturnVal;
   }
   if (!Mock.uxIORead_CallbackBool &&
@@ -126,8 +126,8 @@ ioData uxIORead(ioAddress addr)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
   if (!cmock_call_instance->IgnoreArg_addr)
   {
-    UNITY_SET_DETAILS(CMockString_uxIORead,CMockString_addr);
-    UNITY_TEST_ASSERT_EQUAL_MEMORY((void*)(&cmock_call_instance->Expected_addr), (void*)(&addr), sizeof(ioAddress), cmock_line, CMockStringMismatch);
+    UNITY_SET_DETAILS(CMockString_uxIORead, CMockString_addr);
+    UNITY_TEST_ASSERT_EQUAL_MEMORY((void *)(&cmock_call_instance->Expected_addr), (void *)(&addr), sizeof(ioAddress), cmock_line, CMockStringMismatch);
   }
   if (Mock.uxIORead_CallbackFunctionPointer != NULL)
   {
@@ -137,10 +137,10 @@ ioData uxIORead(ioAddress addr)
   return cmock_call_instance->ReturnVal;
 }
 
-void CMockExpectParameters_uxIORead(CMOCK_uxIORead_CALL_INSTANCE* cmock_call_instance, ioAddress addr);
-void CMockExpectParameters_uxIORead(CMOCK_uxIORead_CALL_INSTANCE* cmock_call_instance, ioAddress addr)
+void CMockExpectParameters_uxIORead(CMOCK_uxIORead_CALL_INSTANCE *cmock_call_instance, ioAddress addr);
+void CMockExpectParameters_uxIORead(CMOCK_uxIORead_CALL_INSTANCE *cmock_call_instance, ioAddress addr)
 {
-  memcpy((void*)(&cmock_call_instance->Expected_addr), (void*)(&addr),
+  memcpy((void *)(&cmock_call_instance->Expected_addr), (void *)(&addr),
          sizeof(ioAddress[sizeof(addr) == sizeof(ioAddress) ? 1 : -1])); /* add ioAddress to :treat_as_array if this causes an error */
   cmock_call_instance->IgnoreArg_addr = 0;
 }
@@ -148,7 +148,7 @@ void CMockExpectParameters_uxIORead(CMOCK_uxIORead_CALL_INSTANCE* cmock_call_ins
 void uxIORead_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, ioData cmock_to_return)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_uxIORead_CALL_INSTANCE));
-  CMOCK_uxIORead_CALL_INSTANCE* cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  CMOCK_uxIORead_CALL_INSTANCE *cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE *)CMock_Guts_GetAddressFor(cmock_guts_index);
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
   memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
   Mock.uxIORead_CallInstance = CMock_Guts_MemChain(Mock.uxIORead_CallInstance, cmock_guts_index);
@@ -160,7 +160,7 @@ void uxIORead_CMockIgnoreAndReturn(UNITY_LINE_TYPE cmock_line, ioData cmock_to_r
 
 void uxIORead_CMockStopIgnore(void)
 {
-  if(Mock.uxIORead_IgnoreBool)
+  if (Mock.uxIORead_IgnoreBool)
     Mock.uxIORead_CallInstance = CMock_Guts_MemNext(Mock.uxIORead_CallInstance);
   Mock.uxIORead_IgnoreBool = (char)0;
 }
@@ -168,7 +168,7 @@ void uxIORead_CMockStopIgnore(void)
 void uxIORead_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, ioAddress addr, ioData cmock_to_return)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_uxIORead_CALL_INSTANCE));
-  CMOCK_uxIORead_CALL_INSTANCE* cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  CMOCK_uxIORead_CALL_INSTANCE *cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE *)CMock_Guts_GetAddressFor(cmock_guts_index);
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
   memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
   Mock.uxIORead_CallInstance = CMock_Guts_MemChain(Mock.uxIORead_CallInstance, cmock_guts_index);
@@ -176,7 +176,7 @@ void uxIORead_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, ioAddress addr, i
   cmock_call_instance->LineNumber = cmock_line;
   cmock_call_instance->CallOrder = ++GlobalExpectCount;
   CMockExpectParameters_uxIORead(cmock_call_instance, addr);
-  memcpy((void*)(&cmock_call_instance->ReturnVal), (void*)(&cmock_to_return),
+  memcpy((void *)(&cmock_call_instance->ReturnVal), (void *)(&cmock_to_return),
          sizeof(ioData[sizeof(cmock_to_return) == sizeof(ioData) ? 1 : -1])); /* add ioData to :treat_as_array if this causes an error */
 }
 
@@ -196,7 +196,7 @@ void uxIORead_Stub(CMOCK_uxIORead_CALLBACK Callback)
 
 void uxIORead_CMockIgnoreArg_addr(UNITY_LINE_TYPE cmock_line)
 {
-  CMOCK_uxIORead_CALL_INSTANCE* cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.uxIORead_CallInstance));
+  CMOCK_uxIORead_CALL_INSTANCE *cmock_call_instance = (CMOCK_uxIORead_CALL_INSTANCE *)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.uxIORead_CallInstance));
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
   cmock_call_instance->IgnoreArg_addr = 1;
 }
@@ -204,9 +204,9 @@ void uxIORead_CMockIgnoreArg_addr(UNITY_LINE_TYPE cmock_line)
 void vIOWrite(ioAddress addr, ioData data)
 {
   UNITY_LINE_TYPE cmock_line = TEST_LINE_NUM;
-  CMOCK_vIOWrite_CALL_INSTANCE* cmock_call_instance;
+  CMOCK_vIOWrite_CALL_INSTANCE *cmock_call_instance;
   UNITY_SET_DETAIL(CMockString_vIOWrite);
-  cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE*)CMock_Guts_GetAddressFor(Mock.vIOWrite_CallInstance);
+  cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE *)CMock_Guts_GetAddressFor(Mock.vIOWrite_CallInstance);
   Mock.vIOWrite_CallInstance = CMock_Guts_MemNext(Mock.vIOWrite_CallInstance);
   if (Mock.vIOWrite_IgnoreBool)
   {
@@ -228,13 +228,13 @@ void vIOWrite(ioAddress addr, ioData data)
     UNITY_TEST_FAIL(cmock_line, CMockStringCalledLate);
   if (!cmock_call_instance->IgnoreArg_addr)
   {
-    UNITY_SET_DETAILS(CMockString_vIOWrite,CMockString_addr);
-    UNITY_TEST_ASSERT_EQUAL_MEMORY((void*)(&cmock_call_instance->Expected_addr), (void*)(&addr), sizeof(ioAddress), cmock_line, CMockStringMismatch);
+    UNITY_SET_DETAILS(CMockString_vIOWrite, CMockString_addr);
+    UNITY_TEST_ASSERT_EQUAL_MEMORY((void *)(&cmock_call_instance->Expected_addr), (void *)(&addr), sizeof(ioAddress), cmock_line, CMockStringMismatch);
   }
   if (!cmock_call_instance->IgnoreArg_data)
   {
-    UNITY_SET_DETAILS(CMockString_vIOWrite,CMockString_data);
-    UNITY_TEST_ASSERT_EQUAL_MEMORY((void*)(&cmock_call_instance->Expected_data), (void*)(&data), sizeof(ioData), cmock_line, CMockStringMismatch);
+    UNITY_SET_DETAILS(CMockString_vIOWrite, CMockString_data);
+    UNITY_TEST_ASSERT_EQUAL_MEMORY((void *)(&cmock_call_instance->Expected_data), (void *)(&data), sizeof(ioData), cmock_line, CMockStringMismatch);
   }
   if (Mock.vIOWrite_CallbackFunctionPointer != NULL)
   {
@@ -243,13 +243,13 @@ void vIOWrite(ioAddress addr, ioData data)
   UNITY_CLR_DETAILS();
 }
 
-void CMockExpectParameters_vIOWrite(CMOCK_vIOWrite_CALL_INSTANCE* cmock_call_instance, ioAddress addr, ioData data);
-void CMockExpectParameters_vIOWrite(CMOCK_vIOWrite_CALL_INSTANCE* cmock_call_instance, ioAddress addr, ioData data)
+void CMockExpectParameters_vIOWrite(CMOCK_vIOWrite_CALL_INSTANCE *cmock_call_instance, ioAddress addr, ioData data);
+void CMockExpectParameters_vIOWrite(CMOCK_vIOWrite_CALL_INSTANCE *cmock_call_instance, ioAddress addr, ioData data)
 {
-  memcpy((void*)(&cmock_call_instance->Expected_addr), (void*)(&addr),
+  memcpy((void *)(&cmock_call_instance->Expected_addr), (void *)(&addr),
          sizeof(ioAddress[sizeof(addr) == sizeof(ioAddress) ? 1 : -1])); /* add ioAddress to :treat_as_array if this causes an error */
   cmock_call_instance->IgnoreArg_addr = 0;
-  memcpy((void*)(&cmock_call_instance->Expected_data), (void*)(&data),
+  memcpy((void *)(&cmock_call_instance->Expected_data), (void *)(&data),
          sizeof(ioData[sizeof(data) == sizeof(ioData) ? 1 : -1])); /* add ioData to :treat_as_array if this causes an error */
   cmock_call_instance->IgnoreArg_data = 0;
 }
@@ -267,7 +267,7 @@ void vIOWrite_CMockStopIgnore(void)
 void vIOWrite_CMockExpect(UNITY_LINE_TYPE cmock_line, ioAddress addr, ioData data)
 {
   CMOCK_MEM_INDEX_TYPE cmock_guts_index = CMock_Guts_MemNew(sizeof(CMOCK_vIOWrite_CALL_INSTANCE));
-  CMOCK_vIOWrite_CALL_INSTANCE* cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE*)CMock_Guts_GetAddressFor(cmock_guts_index);
+  CMOCK_vIOWrite_CALL_INSTANCE *cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE *)CMock_Guts_GetAddressFor(cmock_guts_index);
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringOutOfMemory);
   memset(cmock_call_instance, 0, sizeof(*cmock_call_instance));
   Mock.vIOWrite_CallInstance = CMock_Guts_MemChain(Mock.vIOWrite_CallInstance, cmock_guts_index);
@@ -293,15 +293,14 @@ void vIOWrite_Stub(CMOCK_vIOWrite_CALLBACK Callback)
 
 void vIOWrite_CMockIgnoreArg_addr(UNITY_LINE_TYPE cmock_line)
 {
-  CMOCK_vIOWrite_CALL_INSTANCE* cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.vIOWrite_CallInstance));
+  CMOCK_vIOWrite_CALL_INSTANCE *cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE *)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.vIOWrite_CallInstance));
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
   cmock_call_instance->IgnoreArg_addr = 1;
 }
 
 void vIOWrite_CMockIgnoreArg_data(UNITY_LINE_TYPE cmock_line)
 {
-  CMOCK_vIOWrite_CALL_INSTANCE* cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE*)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.vIOWrite_CallInstance));
+  CMOCK_vIOWrite_CALL_INSTANCE *cmock_call_instance = (CMOCK_vIOWrite_CALL_INSTANCE *)CMock_Guts_GetAddressFor(CMock_Guts_MemEndOfChain(Mock.vIOWrite_CallInstance));
   UNITY_TEST_ASSERT_NOT_NULL(cmock_call_instance, cmock_line, CMockStringIgnPreExp);
   cmock_call_instance->IgnoreArg_data = 1;
 }
-
