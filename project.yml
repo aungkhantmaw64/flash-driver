@@ -51,6 +51,9 @@
     - TEST
 
 :cmock:
+  :treat_as:
+    ioData: uint16_t
+    ioAddress: uint32_t
   :mock_path: mocks
   :mock_prefix: mock_
   :when_no_prototypes: :warn
