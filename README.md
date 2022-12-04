@@ -43,7 +43,7 @@ flowchart TD
 
 ## Flash Driver Test List
 
-- [ ] Successful Operation
+- [x] Successful Operation
 - [ ] Invalid Programming Voltage
 - [ ] Program error
 - [ ] Attempt to program protected block
