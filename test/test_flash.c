@@ -3,6 +3,7 @@
 #include "flash.h"
 #include "mock_io.h"
 #include "m28W160ecx.h"
+#include "fake_micro_time.h"
 
 static ioAddress address;
 static ioData data;
@@ -97,4 +98,28 @@ void test_WriteFails_ReadBackError(void)
 
     result = xFlashWrite(address, data);
     TEST_ASSERT_EQUAL_INT8(FLASH_READ_BACK_ERROR, result);
+}
+
+void test_WriteSucceeds_IgnoreOtherBitsUntilReady(void)
+{
+    vIOWrite_Expect(CommandRegister, ProgramCommand);
+    vIOWrite_Expect(address, data);
+    uxIORead_ExpectAndReturn(StatusRegister, ~ReadyBit);
+    uxIORead_ExpectAndReturn(StatusRegister, ReadyBit);
+    uxIORead_ExpectAndReturn(address, data);
+
+    result = xFlashWrite(address, data);
+
+    TEST_ASSERT_EQUAL_INT8(FLASH_SUCCESS, result);
+}
+
+void test_WriteFails_Timeout(void)
+{
+    vFakeMicroTimeInit(0, 500);
+    vIOWrite_Expect(CommandRegister, ProgramCommand);
+    vIOWrite_Expect(address, data);
+    for (int i = 0; i < 10; i++)
+        uxIORead_ExpectAndReturn(StatusRegister, ~ReadyBit);
+    result = xFlashWrite(address, data);
+    TEST_ASSERT_EQUAL_INT8(FLASH_TIMEOUT_ERROR, result);
 }
