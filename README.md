@@ -1,4 +1,6 @@
-# M28W160ECx Driver
+# Flash Memory Driver
+
+![Tests](https://github.com/aungkhantmaw64/flash-driver/actions/workflows/test-suite.yml/badge.svg)
 
 ## Flash Memory Program Flow Chart
 
