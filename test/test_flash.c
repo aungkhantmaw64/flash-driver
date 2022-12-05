@@ -25,10 +25,27 @@ void test_WriteSucceeds_ReadyImmediately()
     int result = 0;
     vIOWrite_Expect(CommandRegister, ProgramCommand);
     vIOWrite_Expect(address, data);
-    uxIORead_ExpectAndReturn(StatusRegister, 1 << 7);
+    uxIORead_ExpectAndReturn(StatusRegister, ReadyBit);
     uxIORead_ExpectAndReturn(address, data);
 
     result = xFlashWrite(address, data);
 
-    TEST_ASSERT_EQUAL_INT8(0, result);
+    TEST_ASSERT_EQUAL_INT8(FLASH_SUCCESS, result);
+}
+
+void test_ProgramSucceeds_NotImmediatelyReady()
+{
+    int result = 0;
+    vIOWrite_Expect(CommandRegister, ProgramCommand);
+    vIOWrite_Expect(address, data);
+    for (int i = 0; i < 3; i++)
+    {
+        uxIORead_ExpectAndReturn(StatusRegister, 0);
+    }
+    uxIORead_ExpectAndReturn(StatusRegister, ReadyBit);
+    uxIORead_ExpectAndReturn(address, data);
+
+    result = xFlashWrite(address, data);
+
+    TEST_ASSERT_EQUAL_INT8(FLASH_SUCCESS, result);
 }
