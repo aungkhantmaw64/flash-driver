@@ -3,6 +3,11 @@
 
 #include <stdint.h>
 
+/**
+ * @brief
+ *
+ * @return uint32_t
+ */
 uint32_t ulMicroTimeGet(void);
 
 #endif

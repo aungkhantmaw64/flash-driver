@@ -3,6 +3,12 @@
 
 #include "micro_time.h"
 
+/**
+ * @brief
+ *
+ * @param start
+ * @param inc
+ */
 void vFakeMicroTimeInit(uint32_t start, uint32_t inc);
 
 #endif

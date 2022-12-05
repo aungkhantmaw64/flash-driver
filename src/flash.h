@@ -3,6 +3,10 @@
 
 #include "io.h"
 
+/**
+ * @brief
+ *
+ */
 typedef enum
 {
     FLASH_SUCCESS = 0,
@@ -14,8 +18,25 @@ typedef enum
     FLASH_TIMEOUT_ERROR
 } FlashStatusType_t;
 
+/**
+ * @brief
+ *
+ */
 void vFlashCreate(void);
+
+/**
+ * @brief
+ *
+ */
 void vFlashDestroy(void);
+
+/**
+ * @brief
+ *
+ * @param offset
+ * @param data
+ * @return int
+ */
 int xFlashWrite(ioAddress offset, ioData data);
 
 #endif
