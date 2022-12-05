@@ -12,12 +12,15 @@ typedef enum
 typedef enum
 {
     ProgramCommand = 0x40,
-    Reset = 0x0
+    Reset = 0xff
 } FlashCommands;
 
 typedef enum
 {
     ReadyBit = BIT(7),
+    VppErrorBit = BIT(3),
+    ProgramErrorBit = BIT(4),
+    ProtectedBlockErrorBit = BIT(1)
 } StatusRegisterBits;
 
 #endif
