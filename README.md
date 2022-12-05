@@ -32,10 +32,10 @@ flowchart TD
     id7 --> |Yes| id8
     id8 --> |No| id12
     id8 --> |Yes| id9
+    id10 --> id13
+    id11 --> id13
     id12 --> id13
 
-    id10 --> id9
-    id11 --> id9
     id13 --> id9
 
 ```
@@ -46,11 +46,11 @@ flowchart TD
 ## Flash Driver Test List
 
 - [x] Successful Operation
-- [ ] Invalid Programming Voltage
-- [ ] Program error
-- [ ] Attempt to program protected block
-- [ ] Read back fails
-- [ ] Device timeout during write operation
+- [x] Invalid Programming Voltage
+- [x] Program error
+- [x] Attempt to program protected block
+- [x] Read back fails
+- [x] Device timeout during write operation
 
 </summary>
 </details>
