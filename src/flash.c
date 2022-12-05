@@ -22,11 +22,14 @@ int xFlashWrite(ioAddress offset, ioData data)
         {
             return FLASH_PROGRAM_ERROR;
         }
-        else if (status & ProgramErrorBit)
+        else if (status & ProtectedBlockErrorBit)
         {
             return FLASH_PROTECTED_BLOCK_ERROR;
         }
     }
-    uxIORead(offset);
+    if (uxIORead(offset) != data)
+    {
+        return FLASH_READ_BACK_ERROR;
+    }
     return FLASH_SUCCESS;
 }

@@ -87,3 +87,14 @@ void test_WriteFails_ProtectedBlockError(void)
 
     TEST_ASSERT_EQUAL_INT8(FLASH_PROTECTED_BLOCK_ERROR, result);
 }
+
+void test_WriteFails_ReadBackError(void)
+{
+    vIOWrite_Expect(CommandRegister, ProgramCommand);
+    vIOWrite_Expect(address, data);
+    uxIORead_ExpectAndReturn(StatusRegister, ReadyBit);
+    uxIORead_ExpectAndReturn(address, data - 1);
+
+    result = xFlashWrite(address, data);
+    TEST_ASSERT_EQUAL_INT8(FLASH_READ_BACK_ERROR, result);
+}
